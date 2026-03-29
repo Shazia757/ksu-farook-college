@@ -16,24 +16,17 @@ interface GraceMarksProps {
 
 export function GraceMarks({ selections, onChange }: GraceMarksProps) {
 
-  // 🔹 Toggle normal checkboxes
-  const toggle = (key: keyof Omit<GraceMarkSelections, "ncc">) => {
+  // 🔹 Single-select logic
+  const selectOnly = (key: keyof GraceMarkSelections, nccValue?: "A" | "B" | "C") => {
     onChange({
-      ...selections,
-      [key]: !selections[key]
+      nss: key === "nss",
+      artsA: key === "artsA",
+      ncc: key === "ncc" && nccValue ? nccValue : null,
     });
   };
 
-  // 🔹 NCC single select logic
-  const selectNCC = (value: "A" | "B" | "C") => {
-    onChange({
-      ...selections,
-      ncc: selections.ncc === value ? null : value
-    });
-  };
-
-  // 🔹 Reusable UI
-  const CheckboxItem = ({
+  // 🔹 Reusable UI styled as "radio cards"
+  const RadioCard = ({
     id,
     label,
     bonus,
@@ -50,15 +43,16 @@ export function GraceMarks({ selections, onChange }: GraceMarksProps) {
       htmlFor={id}
       onClick={onClick}
       className={cn(
-        "flex items-center justify-between p-3 rounded-lg border transition-all cursor-pointer",
+        "flex items-center justify-between p-3 rounded-lg border transition-all cursor-pointer select-none",
         checked
-          ? "border-blue-500 bg-blue-50 text-blue-900 shadow-sm"
+          ? "border-blue-500 bg-blue-50 text-blue-900 shadow-md"
           : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
       )}
     >
       <div className="flex items-center gap-3">
         <input
-          type="checkbox"
+          type="radio"
+          name="graceMarks"
           checked={checked}
           readOnly
           className="w-4 h-4"
@@ -88,46 +82,44 @@ export function GraceMarks({ selections, onChange }: GraceMarksProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
 
         {/* NSS */}
-        <CheckboxItem
+        <RadioCard
           id="nss"
           label="NSS/SPC/Nanma Mudra/Widow-Jawan Child"
           bonus="15"
           checked={selections.nss}
-          onClick={() => toggle("nss")}
+          onClick={() => selectOnly("nss")}
         />
 
         {/* NCC - Single Select */}
-        <CheckboxItem
+        <RadioCard
           id="nccA"
           label="NCC - A Certificate"
           bonus="18"
           checked={selections.ncc === "A"}
-          onClick={() => selectNCC("A")}
+          onClick={() => selectOnly("ncc", "A")}
         />
-
-        <CheckboxItem
+        <RadioCard
           id="nccB"
           label="NCC - B Certificate"
           bonus="20"
           checked={selections.ncc === "B"}
-          onClick={() => selectNCC("B")}
+          onClick={() => selectOnly("ncc", "B")}
         />
-
-        <CheckboxItem
+        <RadioCard
           id="nccC"
           label="NCC - C Certificate"
           bonus="25"
           checked={selections.ncc === "C"}
-          onClick={() => selectNCC("C")}
+          onClick={() => selectOnly("ncc", "C")}
         />
 
         {/* Arts */}
-        <CheckboxItem
+        <RadioCard
           id="artsA"
           label="Arts Festival (State A-Grade)"
           bonus="10"
           checked={selections.artsA}
-          onClick={() => toggle("artsA")}
+          onClick={() => selectOnly("artsA")}
         />
 
       </div>

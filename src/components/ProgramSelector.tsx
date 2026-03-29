@@ -352,6 +352,8 @@ export function ProgramSelector({ selectedProgram, onSelect, onFormChange, curre
               {(!field.type || field.type === "number") && (
                 <input
                   type="number"
+                  inputMode="numeric"        // shows numeric keyboard on mobile
+                  pattern="[0-9]*"
                   value={formData[field.name] || ""}
                   onChange={(e) =>
                     handleChange(field.name, e.target.value)

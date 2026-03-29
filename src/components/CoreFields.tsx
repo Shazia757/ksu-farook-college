@@ -32,7 +32,7 @@ export function CoreFields({ marks, onChange }: CoreFieldsProps) {
       if (isNaN(num)) num = 0;
       if (num > 200) num = 200;
       setLocalValue(num.toString());
-      onChange(name, num.toString()); 
+      onChange(name, num.toString());
     };
 
     return (
@@ -42,6 +42,8 @@ export function CoreFields({ marks, onChange }: CoreFieldsProps) {
         </label>
         <input
           type="text"
+          inputMode="numeric"      
+          pattern="[0-9]*"
           id={name}
           name={name}
           value={localValue}

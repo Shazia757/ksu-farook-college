@@ -109,9 +109,9 @@ export default function Home() {
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900">
             Admission <span className="text-blue-600 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-500">Index Calculator</span>
           </h1>
-          <p className="text-slate-500 text-lg max-w-xl mx-auto">
+          {/* <p className="text-slate-500 text-lg max-w-xl mx-auto">
             High-precision logic engine to determine your university admission index score.
-          </p>
+          </p> */}
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -159,7 +159,7 @@ export default function Home() {
               )}
 
               {/* Quick instructions/Info */}
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm text-slate-600 shadow-sm">
+              {/* <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 text-sm text-slate-600 shadow-sm">
                 <h4 className="font-bold flex items-center gap-2 mb-2 text-slate-800">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
                   How it works
@@ -171,7 +171,7 @@ export default function Home() {
                   <li><strong>BA/BCom:</strong> based on Total 12th marks (1200).</li>
                   <li><strong>BSc/BVoc:</strong> based on Part III subjects (800).</li>
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
 
